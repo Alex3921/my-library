@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :books_bucket_list, through: :bucket_list_books, source: :book
   has_many :reading_now_books
   has_many :books_reading_now, through: :reading_now_books, source: :book
-  has_many :library
+  has_one :library
   has_many :library_books, through: :library, source: :book
   has_many :opinions
 end
