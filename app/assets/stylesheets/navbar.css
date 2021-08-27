@@ -1,0 +1,49 @@
+.wrapper {
+  display: flex;
+  float: left;
+}
+
+.wrapper .navigation {
+  position: fixed;
+  width: 200px;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: #4b4276;
+  padding: 30px 0;
+}
+
+.wrapper .navigation h2 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+.wrapper .navigation ul {
+  padding-left: 0;
+}
+
+.wrapper .navigation ul li {
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.wrapper .navigation ul li a {
+  color: #bdb8d7;
+  display: block;
+  width: 200px;
+  padding: 25px;
+}
+
+.wrapper .navigation ul li a .fas {
+  width: 25px;
+}
+
+.wrapper .navigation ul li:hover {
+  background: #594f8d;
+}
+
+.wrapper .navigation ul li:hover a {
+  color: #fff;
+}
