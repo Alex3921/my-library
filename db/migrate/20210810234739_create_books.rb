@@ -6,7 +6,6 @@ class CreateBooks < ActiveRecord::Migration[6.1]
       t.text :description
       
       t.integer :author_id
-      t.integer :genre_id
 
       t.timestamps null: false
     end
