@@ -1,0 +1,44 @@
+<% content_for :title do %><%= @book.try(:title) %><% end %>
+
+<%= render partial: "books/book", locals: {book: @book} %>
+
+<section class="container">
+  <div class="row d-flex justify-content-center flex-nowrap">
+    <div class="col-lg-3">
+      <%= content_tag(:h2, "Opinion") %>
+    </div>
+    <div class="col-lg-7 mb-3">
+      <h3>From the community</h3>
+      <div class="w-75">
+        <%= content_tag(:div, "Please add your opinion on this title:", class: "h6") %>
+        <%= render partial: "books/opinion_form", locals: {book: @book} %>
+      </div>
+      <% @book.opinions.each do |opinion| %>
+        <% if opinion != @opinion %>
+          <div class="card w-75 mt-5">
+            <div class="card-body">
+              <span class="card-title h4"><%= link_to opinion.user.username, user_path(opinion.user) %></span>
+              <% if @current_user == opinion.user %>
+              <span><%= link_to "", book_opinion_path(book, opinion), method: :delete, class:"p-1 fas fa-trash-alt" %></span>
+              <span><%= link_to "", edit_book_opinion_path(book, opinion), class:"p-1 fas fa-edit" %></span>
+              <% end  %>
+              <p class="card-text h6"><%= opinion.created_at.strftime("%A, %m/%d/%Y") %></p>
+              <p class="card-text h5 mt-3"><%= opinion.content %></p>
+            </div>
+          </div>
+        <% else %>
+          <div class="card w-75 mt-5">
+            <div class="card-body">
+              <span class="card-title h4"><%= link_to @opinion.user.username, user_path(@opinion.user) %></span>
+              <p class="card-text h6"><%= @opinion.created_at.strftime("%A, %m/%d/%Y") %></p>
+              <%= form_for([@book, @opinion]) do |f| %>
+              <%= f.text_area :content, class:"card-text h5 mt-3" %></p>
+              <%= f.submit %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>
