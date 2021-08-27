@@ -1,0 +1,9 @@
+<div class="mb-3">
+  <%= form_for([book, Opinion.new]) do |b| %>
+  <%= b.text_area :content, placeholder:"Add comment", class:"form-control", rows:"3" %>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <%= b.submit "Post", class:"btn btn-primary mt-1"  %>
+  </div>
+  <% end %>
+</div>
