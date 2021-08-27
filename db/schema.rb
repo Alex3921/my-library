@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_11_191544) do
+ActiveRecord::Schema.define(version: 2021_08_22_215852) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 2021_08_11_191544) do
     t.string "cover"
     t.text "description"
     t.integer "author_id"
-    t.integer "genre_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -44,19 +43,6 @@ ActiveRecord::Schema.define(version: 2021_08_11_191544) do
   end
 
   create_table "finished_books", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "book_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "genres", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "libraries", force: :cascade do |t|
     t.integer "user_id"
     t.integer "book_id"
     t.datetime "created_at", precision: 6, null: false
@@ -92,6 +78,8 @@ ActiveRecord::Schema.define(version: 2021_08_11_191544) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "uid"
+    t.string "provider"
   end
 
 end
