@@ -1,0 +1,28 @@
+<% content_for :title do %>MyLibrary - Sign In<% end %>
+<% content_for :head do %><%= stylesheet_link_tag 'login_signup', media: 'all', 'data-turbolinks-track': 'reload' %><% end %>
+
+<div class="center">
+  <h1>MyLibrary</h1>
+  <%= form_for(:user, url: login_path) do |f| %>
+    <div class="form_field">
+      <%= f.text_field :username, required: true %>
+      <%= content_tag(:span) %>
+      <%= f.label :username %>
+    </div>
+    <div class="form_field">
+      <%= f.password_field :password, required: true %>
+      <%= content_tag(:span) %>
+      <%= f.label :password%>
+    </div>
+  
+    <%= f.submit "Sign In" %>
+  <% end %>
+
+  <div class="alternative_link">
+    Not a member? <%= link_to "Join", signup_path %>
+  </div>
+
+  <div class="oauth_link">
+    or you can sign in with <%= link_to 'auth/google_oauth2', method: 'POST' do %><%= '<i class="fa-solid fa-g"></i>oogle'.html_safe %><% end %>
+  </div>
+</div>
