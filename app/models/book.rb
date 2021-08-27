@@ -1,6 +1,4 @@
 class Book < ApplicationRecord
   belongs_to :author
-  belongs_to :genre
-
-  has_many :opinions
+  has_many :opinions, dependent: :destroy
 end
