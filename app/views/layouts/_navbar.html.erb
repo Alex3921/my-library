@@ -1,0 +1,28 @@
+<%= stylesheet_link_tag 'navbar', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+<div class="wrapper">
+  <div class="navigation">
+    <h2>
+      <% if logged_in? %>
+        <%= "Hi, #{@current_user.username}" %>
+      <% else %>
+        <%= "Welcome!" %>
+      <% end %>
+    </h2>
+    <ul>
+      <li><%= link_to((content_tag(:i, "", :class => "fas fa-home") + "Home").html_safe, books_path) %></li>
+      <li><%= link_to((content_tag(:i, "", :class => "fas fa-info-circle") + "About").html_safe, about_path) %></li>
+
+      <% if logged_in?%>
+      <li><%= link_to((content_tag(:i, "", :class => "fas fa-user") + "Profile").html_safe, user_path(@current_user)) %></li>
+      <li><%= link_to((content_tag(:i, "", :class => "fas fa-star") + "Favorites").html_safe, user_favorites_path(@current_user)) %></li>
+      <li><%= link_to((content_tag(:i, "", :class => "fas fa-book-open") + "Reading").html_safe, user_reading_now_path(@current_user)) %></li>
+      <li><%= link_to((content_tag(:i, "", :class => "fas fa-book") + "Finished").html_safe, user_finished_path(@current_user)) %></li>
+      <li><%= link_to((content_tag(:i, "", :class => "fas fa-list-alt") + "Bucket List").html_safe, user_bucket_list_path(@current_user)) %></li>
+      <li><%= link_to((content_tag(:i, "", :class => "fas fa-arrow-circle-left") + "Sign out").html_safe, logout_path, method: 'delete') %></li>
+      <% else %>
+      <li><%= link_to((content_tag(:i, "", :class => "fas fa-arrow-circle-right") + "Sign in").html_safe, login_path) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
