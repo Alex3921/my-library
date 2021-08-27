@@ -1,0 +1,17 @@
+<%= render partial: "book", locals: {book: @book} %>
+
+<section class="container">
+  <div class="row d-flex justify-content-center flex-nowrap">
+    <div class="col-lg-3">
+      <%= content_tag(:h2, "Opinion") %>
+    </div>
+    <div class="col-lg-7 mb-3">
+      <h3>From the community</h3>
+      <div class="w-75">
+        <%= content_tag(:div, "Please add your opinion on this title:", class: "h6") %>
+        <%= render partial: "opinions/opinion_form", locals: {book: @book} %>
+      </div>
+      <%= render partial: "opinions/opinion", collection: @book.opinions, locals: {book: @book} %>
+    </div>
+  </div>
+</section>
