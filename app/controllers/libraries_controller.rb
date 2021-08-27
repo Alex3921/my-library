@@ -1,2 +1,0 @@
-class LibrariesController < ApplicationController
-end
