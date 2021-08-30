@@ -2,13 +2,13 @@
   <div class="card">
     <div class="row">
       <div class="col-md-4">
-        <%= image_tag(@current_user.img_url, class:"rounded float-start", alt:"username_profile_pic") %>
+        <%= image_tag(@current_user.img_url, class:"img-fluid rounded", alt:"username_profile_pic") %>
       </div>
       <div class="col-md-8 mt-3">
         <div class="row">
           <div class="col-8 col-sm-6">
-            <h3 class="card-title"><%= link_to @current_user.username, user_path(@current_user) %></h3>
-            <p><%= @current_user.email %></p>
+            <h1 class="card-title"><%= link_to @current_user.username, user_path(@current_user) %></h1>
+            <h3><%= @current_user.email %></h3>
           </div>
           <div class="col-4 col-sm-6">
             <h6>Favorite books: <%= FavoriteBook.where(user: @current_user).count %></h6>
@@ -19,5 +19,9 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="mt-2">
+    <%= link_to "Delete", user_path(@current_user), class:"btn btn-primary float-end m-1", method:'delete' %>
+    <%= link_to "Edit", edit_user_path(@current_user), class:"btn btn-primary float-end m-1" %>
   </div>
 </div>
