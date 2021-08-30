@@ -5,7 +5,7 @@ class OpinionsController < ApplicationController
     @book = Book.find(params[:book_id])
     @book.opinions.build(opinion_params).user = @current_user 
     if @book.save
-      flash[:notice] = "Opinion added successfully!"
+      flash[:notice] = "Comment added successfully!"
     else
       flash[:alert] = "There was an error. Please try again!"
     end
@@ -23,15 +23,15 @@ class OpinionsController < ApplicationController
     @opinion = Opinion.find(params[:id])
     
     if @opinion.update(opinion_params)
-      redirect_to book_path(@book)
+      redirect_to book_path(@book), notice: 'Comment updated successfully!'
     else
-      render 'books/edit'
+      render 'books/edit', flash.now[:alert] = "There was an error. Please try again!"
     end
   end
 
   def destroy
     Opinion.destroy(params[:id])
-    redirect_to book_path(params[:book_id])
+    redirect_to book_path(params[:book_id]), notice: "Comment removed!"
   end
 
   private
