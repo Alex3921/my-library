@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :bucket_list, through: :bucket_list_books, source: :book
   has_many :reading_now_books, dependent: :destroy
   has_many :reading_now, through: :reading_now_books, source: :book
+  has_many :opinions, dependent: :destroy
 
   def self.from_omniauth(response)
     User.find_or_create_by(uid: response['uid'], provider: response['provider']) do |u|
