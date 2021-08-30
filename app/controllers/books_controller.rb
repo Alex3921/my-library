@@ -7,17 +7,12 @@ class BooksController < ApplicationController
       method_from_url = request.original_url.split('/').last
       @books = @current_user.send(method_from_url)
     else
-      @books = Book.all
+      @books = Book.all[0..10]
     end
   end
 
   def show
     @book = Book.find(params[:id])
-  end
-
-  private
-  def book_params
-    params.require(:book).permit(opinion: [:content])
   end
 
 end
