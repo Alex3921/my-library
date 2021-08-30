@@ -98,6 +98,7 @@ input[type="submit"] {
   font-weight: 700;
   cursor: pointer;
   outline: none;
+  margin-bottom: 25px;
 }
 
 input[type="submit"]:hover {
