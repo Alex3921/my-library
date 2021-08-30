@@ -10,8 +10,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to user_path(user),  notice: 'Logged in successfully'
     else
-      flash[:alert] = "Invalid credentials. Please try again!"
-      redirect_to login_path
+      redirect_to login_path, alert: "Invalid credentials. Please try again!"
     end
   end
 
@@ -22,14 +21,13 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to user_path(user),  notice: 'Logged in successfully'
     else
-      flash[:alert] = "Invalid credentials. Please try again!"
-      redirect_to login_path
+      redirect_to login_path, alert: "Authentication failed. Please try again!"
     end
   end
 
   def destroy
     reset_session
-    redirect_to login_path
+    redirect_to login_path, notice: 'Logged out successfully'
   end
 
   private
