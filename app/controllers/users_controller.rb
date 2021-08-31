@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   include UsersHelper
   before_action :require_user_logged_in!, only: [:show, :edit, :update]
-  before_action :user_is_allowed?, only: [:show, :edit, :update]
 
   def show
     @current_user = User.find(session[:user_id])
@@ -18,7 +17,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user), notice: 'Account created successfully!'
     else
-      render :new, flash.now[:alert] = "There was an error. Please try again!"
+      flash.now[:alert] = @user.errors.full_messages[0]
+      render :new
     end
   end
 
@@ -27,13 +27,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    byebug
     @user = User.find(session[:user_id])
 
-    if @user.update(user_params)
+    if @user.update(user_params.compact_blank!)
       redirect_to user_path(@user), notice: 'Account updated successfully!'
     else
-      render :edit, flash.now[:alert] = "There was an error. Please try again!"
+      flash.now[:alert] = @user.errors.full_messages[0]
+      render :edit
     end
   end
 
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
 private
 
   def user_params
-    params.require(:user).permit(:username, :email, :img_url, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email, :cover, :password, :password_confirmation)
   end
 
 end
