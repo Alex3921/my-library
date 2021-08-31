@@ -25,7 +25,8 @@ class OpinionsController < ApplicationController
     if @opinion.update(opinion_params)
       redirect_to book_path(@book), notice: 'Comment updated successfully!'
     else
-      render 'books/edit', flash.now[:alert] = "There was an error. Please try again!"
+      flash.now[:alert] = @opinion.errors.full_messages[0]
+      render 'opinions/edit'
     end
   end
 
