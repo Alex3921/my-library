@@ -15,11 +15,10 @@ class SessionsController < ApplicationController
   end
 
   def omniauth
-    user = User.from_omniauth(oauth_response)
-
-    if user.valid?
-      session[:user_id] = user.id
-      redirect_to user_path(user),  notice: 'Logged in successfully'
+    @current_user = User.from_omniauth(oauth_response)
+    if @current_user.valid?
+      session[:user_id] = @current_user.id
+      redirect_to user_path(@current_user),  notice: 'Logged in successfully'
     else
       redirect_to login_path, alert: "Authentication failed. Please try again!"
     end
