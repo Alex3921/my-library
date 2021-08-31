@@ -3,7 +3,7 @@ class User < ApplicationRecord
   validates_presence_of :email, :username, on: :create
   validates_uniqueness_of :email, :username, message: 'An account associated with %{value} already exists'
 
-  has_one_attached :img_url
+  has_one_attached :cover
   has_many :favorite_books, dependent: :destroy
   has_many :favorites, through: :favorite_books, source: :book
   has_many :finished_books, dependent: :destroy
@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :opinions, dependent: :destroy
 
   def self.from_omniauth(response)
-    User.find_or_create_by(uid: response['uid'], provider: response['provider']) do |u|
+    User.find_or_create_by!(uid: response['uid'], provider: response['provider']) do |u|
       u.email = response['info']['email']
       u.username = response['info']['name']
       u.password = SecureRandom.hex(15)
