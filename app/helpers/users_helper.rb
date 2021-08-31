@@ -1,8 +1,5 @@
 module UsersHelper
-
-  def user_is_allowed?
-    if session[:user_id] != params[:user_id]
-      render :show, alert: "Access denied!"
-    end
+  def user_cover
+    @current_user.img_url.blank? ? @current_user.cover : @current_user.img_url
   end
 end
