@@ -4,26 +4,26 @@
   <%= content_for :form_title %>
   <%= form_for(@user) do |f| %>
     <div class="form_field">
-      <%= f.text_field :username, required: true %>
+      <%= f.text_field :username %>
       <%= content_tag(:span) %>
       <%= f.label :username %>
     </div>
     <div class="form_field">
-      <%= f.text_field :email, required: true %>
+      <%= f.text_field :email %>
       <%= content_tag(:span) %>
       <%= f.label :email %>
     </div>
     <div class="form_field">
-      <%= f.file_field :img_url, required: true %>
+      <%= f.file_field :cover %>
       <%= content_tag(:span) %>
     </div>
     <div class="form_field">
-      <%= f.password_field :password, required: true %>
+      <%= f.password_field :password %>
       <%= content_tag(:span) %>
       <%= f.label :password%>
     </div>
     <div class="form_field">
-      <%= f.password_field :password_confirmation, required: true %>
+      <%= f.password_field :password_confirmation %>
       <%= content_tag(:span) %>
       <%= f.label :password_confirmation %>
     </div>
@@ -39,8 +39,7 @@
   </div>
 
   <div class="oauth_link">
-    or you can sign in with <%= link_to signup_path do %><%= '<i class="fa-solid fa-g"></i>oogle'.html_safe %><% end %>
+    or you can sign in with <%= link_to 'auth/google_oauth2', method: 'POST' do %><%= '<i class="fa-solid fa-g"></i>oogle'.html_safe %><% end %>
   </div>
   <% end %>
-
 </div>
