@@ -2,13 +2,13 @@
   <div class="card-body">
     <span class="card-title h4"><%= link_to opinion.user.username, user_path(opinion.user) %></span>
     <% if @current_user == opinion.user %>
-    <span><%= link_to "", book_opinion_path(book, opinion), method: :delete, class:"p-1 fas fa-trash-alt" %></span>
-    <span><%= link_to "", edit_book_opinion_path(book, opinion), class:"p-1 fas fa-edit" %></span>
+    <span><%= link_to "", opinion_path(opinion), method: :delete, class:"p-1 fas fa-trash-alt" %></span>
+    <span><%= link_to "", edit_opinion_path(opinion), class:"p-1 fas fa-edit" %></span>
     <% end %>
     <p class="card-text h6"><%= opinion.created_at.strftime("%A, %m/%d/%Y") %></p>
     <p class="card-text h5 mt-3"><%= opinion.content %></p>
     <span><%= likes_count(opinion) %></span>
-    <span><%= link_to(like_icon(opinion), book_opinion_likes_path(book, opinion), method: "POST") %></span>
+    <span><%= link_to(like_icon(opinion), opinion_likes_path(opinion), method: "POST") %></span>
   </div>
 </div>
 
