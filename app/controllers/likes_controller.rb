@@ -3,8 +3,8 @@ class LikesController < ApplicationController
   include LikesHelper
 
   def create
-    @book = Book.find(params[:book_id])
     @opinion = Opinion.find(params[:opinion_id])
+    @book = @opinion.book
     like = @opinion.likes.find_by(user: @current_user)
     if !!like
       Like.delete(like)

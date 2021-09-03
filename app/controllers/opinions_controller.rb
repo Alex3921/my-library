@@ -14,13 +14,13 @@ class OpinionsController < ApplicationController
   end
 
   def edit
-    @book = Book.find(params[:book_id])
     @opinion = Opinion.find(params[:id])
+    @book = @opinion.book
   end
 
   def update
-    @book = Book.find(params[:book_id])
     @opinion = Opinion.find(params[:id])
+    @book = @opinion.book
     
     if @opinion.update(opinion_params)
       redirect_to book_path(@book), notice: 'Comment updated successfully!'
@@ -31,8 +31,10 @@ class OpinionsController < ApplicationController
   end
 
   def destroy
-    Opinion.destroy(params[:id])
-    redirect_to book_path(params[:book_id]), notice: "Comment removed!"
+    @opinion = Opinion.find(params[:id])
+    @book = @opinion.book
+    @opinion.destroy
+    redirect_to book_path(@book), notice: "Comment removed!"
   end
 
   private
