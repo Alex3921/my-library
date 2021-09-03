@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   delete  'logout',       to: 'sessions#destroy'
   
 
-  resources :users do
+  resources :users, only: [:new, :create, :show, :edit, :update, :destroy] do
     get 'favorites',   to: 'books#index'
     get 'finished',    to: 'books#index'
     get 'reading_now', to: 'books#index'
@@ -19,11 +19,15 @@ Rails.application.routes.draw do
   end
   
   resources :books, only: [:show, :index] do
-    resources :opinions, only: [:create, :edit, :update, :destroy]
+    resources :opinions, only: [:create]
     post 'favorites',   to: 'favorite_books#create'
     post 'finished',    to: 'finished_books#create'
     post 'reading_now', to: 'reading_now_books#create'
     post 'bucket_list', to: 'bucket_list_books#create'
+  end
+
+  resources :opinions, only: [:edit, :update, :destroy] do
+    resources :likes, only: [:create]
   end
 
   resources :authors, only: [:show]
