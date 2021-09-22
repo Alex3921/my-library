@@ -3,7 +3,7 @@ class User < ApplicationRecord
   validates_presence_of :email, :username, on: :create
   validates_uniqueness_of :email, :username, message: 'An account associated with %{value} already exists'
 
-  has_one_attached :cover
+  has_one_attached :cover, dependent: :destroy
   has_many :favorite_books, dependent: :destroy
   has_many :favorites, through: :favorite_books, source: :book
   has_many :finished_books, dependent: :destroy
