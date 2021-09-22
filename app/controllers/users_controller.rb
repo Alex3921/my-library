@@ -28,11 +28,11 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(session[:user_id])
-
+    
     if @user.update(user_params.compact_blank!)
       redirect_to user_path(@user), notice: 'Account updated successfully!'
     else
-      flash.now[:alert] = @user.errors.full_messages[0]
+      flash.now[:alert] = @user.errors.full_messages.to_sentence
       render :edit
     end
   end
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
 private
 
   def user_params
-    params.require(:user).permit(:username, :email, :cover, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email, :cover, :img_url, :password, :password_confirmation)
   end
 
 end
