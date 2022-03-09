@@ -18,9 +18,9 @@ module BooksHelper
 
   def reading_now_icon(book)
     if logged_in?
-      @current_user.reading_now.include?(book) ? "fa-regular fa-clock" : "fa-solid fa-clock"
+      @current_user.reading_now.include?(book) ? "fa-solid fa-clock" : "fa-regular fa-clock"
     else
-      "fa-solid fa-clock"
+      "fa-regular fa-clock"
     end
   end
 
