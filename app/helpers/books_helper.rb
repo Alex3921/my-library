@@ -10,17 +10,17 @@ module BooksHelper
 
   def finished_icon(book)
     if logged_in?
-      @current_user.finished.include?(book) ? "fas fa-book" : "far fa-book"
+      @current_user.finished.include?(book) ? "fa-solid fa-square-check" : "fa-regular fa-square-check"
     else
-      "far fa-book"
+      "fa-regular fa-square-check"
     end
   end
 
   def reading_now_icon(book)
     if logged_in?
-      @current_user.reading_now.include?(book) ? "fas fa-book-open" : "far fa-book-open"
+      @current_user.reading_now.include?(book) ? "fa-regular fa-clock" : "fa-solid fa-clock"
     else
-      "far fa-book-open"
+      "fa-solid fa-clock"
     end
   end
 
