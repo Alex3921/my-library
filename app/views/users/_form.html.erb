@@ -4,26 +4,26 @@
   <%= content_for :form_title %>
   <%= form_for(@user) do |f| %>
     <div class="form_field">
-      <%= f.text_field :username %>
+      <%= f.text_field :username, required: true %>
       <%= content_tag(:span) %>
       <%= f.label :username %>
     </div>
     <div class="form_field">
-      <%= f.text_field :email %>
+      <%= f.text_field :email, required: true %>
       <%= content_tag(:span) %>
       <%= f.label :email %>
     </div>
     <div class="form_field">
-      <%= f.file_field :cover %>
+      <%= f.file_field :cover, required: true %>
       <%= content_tag(:span) %>
     </div>
     <div class="form_field">
-      <%= f.password_field :password %>
+      <%= f.password_field :password, required: true %>
       <%= content_tag(:span) %>
       <%= f.label :password%>
     </div>
     <div class="form_field">
-      <%= f.password_field :password_confirmation %>
+      <%= f.password_field :password_confirmation, required: true %>
       <%= content_tag(:span) %>
       <%= f.label :password_confirmation %>
     </div>
