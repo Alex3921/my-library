@@ -10,7 +10,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     
     <script src="https://kit.fontawesome.com/79dab5136c.js" crossorigin="anonymous"></script>
-    
+
+    <%= favicon_link_tag 'apple-touch-icon.png', sizes: '180x180' %>
+    <%= favicon_link_tag 'favicon-32x32.png', sizes: '32x32' %>
+    <%= favicon_link_tag 'favicon-16x16.png', sizes: '16x16' %>
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     
@@ -20,6 +24,7 @@
   <body>
     <header>
       <%= render partial: 'layouts/navbar' %>
+      <%= puts(favicon_link_tag)%>
     </header>
 
     <main role="main">
