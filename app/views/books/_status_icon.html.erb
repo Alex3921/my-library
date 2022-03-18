@@ -1,5 +1,5 @@
 <div class="pb-3">
-  <span><%= link_to "", book_favorites_path(book), method: 'post', class: favorite_icon(book) %></span>
+  <span><%= link_to "", book_favorites_path(book), method: 'post', class: favorite_icon(book), title: 'Add to favorites' %></span>
   <span><%= link_to "", book_finished_path(book), method: 'post', class: finished_icon(book) %></span>
   <span><%= link_to "", book_reading_now_path(book), method: 'post', class: reading_now_icon(book) %></span>
   <span><%= link_to "", book_bucket_list_path(book), method: 'post', class: bucket_list_icon(book) %></span>
