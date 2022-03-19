@@ -20,7 +20,7 @@
               <span class="card-title h4"><%= link_to opinion.user.username, user_path(opinion.user) %></span>
               <% if @current_user == opinion.user %>
               <span><%= link_to "", opinion_path(opinion), method: :delete, class:"p-1 fas fa-trash-alt", title: "Delete comment" %></span>
-              <span><%= link_to "", edit_opinion_path(opinion), class:"p-1 fas fa-edit"%></span>
+              <span><%= link_to "", edit_opinion_path(opinion), class:"p-1 fas fa-edit", title: "Edit comment" %></span>
               <% end  %>
               <p class="card-text h6"><%= opinion.created_at.strftime("%A, %m/%d/%Y") %></p>
               <p class="card-text h5 mt-3"><%= opinion.content %></p>
