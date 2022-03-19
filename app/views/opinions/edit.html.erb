@@ -29,14 +29,14 @@
         <% else %>
           <div class="card w-75 mt-5">
             <div class="card-body">
-              <span class="card-title h4"><%= link_to @opinion.user.username, user_path(@opinion.user) %></span>
+              <span class="card-title h4"><%= link_to @opinion.user.username, user_path(@opinion.user), , title: "View #{@opinion.user.username}" %></span>
               <p class="card-text h6"><%= @opinion.created_at.strftime("%A, %m/%d/%Y") %></p>
               <%= form_for(@opinion) do |f| %>
                 <%= f.text_area :content, class:"card-text h5 mt-3", size:"30x5" %></p> 
               <% end %>
               <div class="float-end">
                 <%= button_tag "Update", class:"btn btn-outline-primary", form:"edit_opinion_#{@opinion.id}" %>
-                <%= link_to "Cancel", book_path(@book), class:"btn btn-outline-primary" %>
+                <%= link_to "Cancel", book_path(@book), class:"btn btn-outline-primary"%>
               </div>
             </div>
           </div>
